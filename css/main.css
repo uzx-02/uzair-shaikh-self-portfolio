@@ -70,11 +70,11 @@ html, body {
 	height: 100%;
 }
 body {
-	background: #000000;
+	background: #151515;
 	font-family: "lora-regular", serif;
 	font-size: 1.7rem;
 	line-height: 3rem;
-	color: #ffffff;
+	color: #6e6e6e;
 }
 
 /**
@@ -102,7 +102,7 @@ a:hover, a:focus, a:active {
  */
 h1, h2, h3, h4, h5, h6, .h01, .h02, .h03, .h04, .h05, .h06 {
 	font-family: "poppins-semibold", sans-serif;
-	color: #ffffff;
+	color: #313131;
 	font-style: normal;
 	text-rendering: optimizeLegibility;
 	margin-bottom: 2.1rem;
@@ -156,7 +156,7 @@ p.lead {
 	font-family: "lora-regular", serif;
 	font-size: 2rem;
 	line-height: 1.8;
-	color: #ffffff;
+	color: #888888;
 }
 @media only screen and (max-width:768px) {
 	p.lead {
@@ -1489,7 +1489,7 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 #about {
-	background: #000000;
+	background: #FFFFFF;
 	padding-top: 12rem;
 	padding-bottom: 15rem;
 }
