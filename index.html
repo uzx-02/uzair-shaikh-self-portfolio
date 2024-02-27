@@ -938,11 +938,12 @@
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
     (function () {
-        emailjs.init("REzzejFLpoyHQMSzP");
+        emailjs.init("REzzejFLpoyHQMSzP"); // Replace "YOUR_USER_ID" with your actual EmailJS user ID
         
+        // Event listener for form submission
         document.getElementById('contactForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-
+            event.preventDefault(); // Prevent the default form submission
+            
             // Get form data
             var formData = {
                 contactName: document.getElementById('contactName').value,
@@ -950,20 +951,22 @@
                 contactSubject: document.getElementById('contactSubject').value,
                 contactMessage: document.getElementById('contactMessage').value
             };
-
+            
             // Send email
             emailjs.send("service_psv4zza", "template_yoshida02", formData)
                 .then(function (response) {
                     console.log("Email sent successfully:", response);
-                    document.getElementById('message-warning').innerHTML = "";
-                    document.getElementById('message-success').style.display = "block";
-                }, function (error) {
+                    document.getElementById('message-warning').innerHTML = ""; // Clear any previous error messages
+                    document.getElementById('message-success').style.display = "block"; // Show success message
+                })
+                .catch(function (error) {
                     console.error("Email sending failed:", error);
-                    document.getElementById('message-warning').innerHTML = "An error occurred while sending the email. Please try again later.";
+                    document.getElementById('message-warning').innerHTML = "An error occurred while sending the email. Please try again later."; // Display error message
                 });
         });
     })();
 </script>
+
 
 
 

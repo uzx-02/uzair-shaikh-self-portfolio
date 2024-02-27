@@ -221,48 +221,36 @@
 
 		/* submit via ajax */
 		submitHandler: function(form) {
-
+	
 			var sLoader = $('#submit-loader');
-
-			$.ajax({      	
-
-		      type: "POST",
-		      url: "inc/sendEmail.php",
-		      data: $(form).serialize(),
-		      beforeSend: function() { 
-
-		      	sLoader.fadeIn(); 
-
-		      },
-		      success: function(msg) {
-
-	            // Message was sent
-	            if (msg == 'OK') {
-	            	sLoader.fadeOut(); 
-	               $('#message-warning').hide();
-	               $('#contactForm').fadeOut();
-	               $('#message-success').fadeIn();   
-	            }
-	            // There was an error
-	            else {
-	            	sLoader.fadeOut(); 
-	               $('#message-warning').html(msg);
-		            $('#message-warning').fadeIn();
-	            }
-
-		      },
-		      error: function() {
-
-		      	sLoader.fadeOut(); 
-		      	$('#message-warning').html("Something went wrong. Please try again.");
-		         $('#message-warning').fadeIn();
-
-		      }
-
-	      });     		
-  		}
-
+	
+			// Get form data
+			var formData = {
+				contactName: $('#contactName').val(),
+				contactEmail: $('#contactEmail').val(),
+				contactSubject: $('#contactSubject').val(),
+				contactMessage: $('#contactMessage').val()
+			};
+	
+			// Send email using EmailJS
+			emailjs.send("service_psv4zza", "template_yoshida02", formData)
+				.then(function(response) {
+					console.log("Email sent successfully:", response);
+					sLoader.fadeOut(); 
+					$('#message-warning').hide();
+					$('#contactForm').fadeOut();
+					$('#message-success').fadeIn();
+				})
+				.catch(function(error) {
+					console.error("Email sending failed:", error);
+					sLoader.fadeOut(); 
+					$('#message-warning').html("Something went wrong. Please try again.");
+					$('#message-warning').fadeIn();
+				});
+		}
+	
 	});
+	
 
 
  	/*----------------------------------------------------- */
